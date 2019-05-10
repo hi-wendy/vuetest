@@ -1,18 +1,60 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ul>
+      <li v-for="(item,index) in lists" :key="index">
+        {{item.text}}
+      </li>
+    </ul>
+    <Hellos :value="value" />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      value: "a",
+      list: [
+        {
+          text: "a"
+        },
+        {
+          text: "b"
+        },
+        {
+          text: "c"
+        }
+      ]
+    };
+  },
+  beforeCreate () {
+    
+  },
+  created () {
+    
+  },
+  beforeMount () {
+    
+  },
+  mounted () {
+    
+  },
+  beforeDestroy () {
+    
+  },
+  destroyed () {
+    
+  },
+  computed: {
+    lists(){
+      return this.list.filter((item)=>{
+        return item.text==='b'
+      })
+    }
   }
-}
+};
 </script>
+
+<style>
+</style>

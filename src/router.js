@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import a from './views/a.vue'
+import b from './views/b.vue'
 
 Vue.use(Router)
 
@@ -9,9 +11,28 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: 'a',
+          name: 'a',
+          component: a
+        },
+        {
+          path: 'b',
+          name: 'b',
+          component: b,
+          children: [
+            {
+              path: 'home',
+              name: 'home1',
+              component: Home
+            }
+          ]
+        }
+      ]
     },
     {
       path: '/about',
